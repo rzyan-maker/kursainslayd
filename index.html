@@ -1,263 +1,261 @@
-<!DOCTYPE html>
-<html lang="hy">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URU - Lori Cultural Project</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;700&family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <style>
-        :root {
-            --primary: #6a1b9a;
-            --dark: #1a0033;
-            --accent: #00e5ff;
-            --text: #2c3e50;
-            --bg: #f8f9fa;
-            --card-bg: #ffffff;
-            --border: rgba(106, 27, 154, 0.1);
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Sans Armenian', sans-serif; background: var(--bg); overflow: hidden; }
-
-        .container { width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; }
-
-        .slide {
-            width: 90%; height: 85%; max-width: 1200px; max-height: 700px;
-            background: var(--card-bg); border-radius: 25px; padding: 45px 60px;
-            position: absolute; display: none; flex-direction: column;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-            border: 1px solid var(--border);
-        }
-
-        .slide.active { display: flex; animation: fadeIn 0.5s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
-
-        .header { 
-            display: flex; justify-content: space-between; align-items: center; 
-            margin-bottom: 25px; border-bottom: 2px solid var(--primary); padding-bottom: 15px; 
-        }
-        .logo-box { background: #fff; padding: 5px; border-radius: 8px; }
-        .logo { height: 50px; }
-
-        .title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 24px; color: var(--dark); text-transform: uppercase; }
+    <!DOCTYPE html>
+    <html lang="hy">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>URU - Lori Cultural Project</title>
         
-        h2 { color: var(--primary); font-size: 20px; margin-bottom: 12px; }
-        p { font-size: 16px; line-height: 1.7; color: var(--text); text-align: justify; margin-bottom: 10px; }
-        
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 10px; flex-grow: 1; }
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 10px; }
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;700&family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-        .card { 
-            background: #fdfcff; padding: 25px; border-radius: 18px; 
-            border: 1px solid var(--border); height: 100%;
-            display: flex; flex-direction: column; justify-content: center;
-        }
-        .card i { color: var(--primary); font-size: 28px; margin-bottom: 15px; }
+        <style>
+            :root {
+                --primary: #6a1b9a;
+                --dark: #1a0033;
+                --accent: #00e5ff;
+                --text: #2c3e50;
+                --bg: #f8f9fa;
+                --card-bg: #ffffff;
+                --border: rgba(106, 27, 154, 0.1);
+            }
 
-        .footer-nav { position: fixed; bottom: 30px; display: flex; align-items: center; gap: 30px; left: 50%; transform: translateX(-50%); }
-        .btn { 
-            background: var(--primary); color: white; border: none; width: 45px; height: 45px; 
-            border-radius: 50%; cursor: pointer; transition: 0.3s; font-size: 18px;
-        }
-        .btn:hover { background: var(--dark); transform: translateY(-2px); }
-        .counter { font-weight: bold; font-size: 14px; color: var(--text); padding: 5px 15px; background: #fff; border-radius: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+            * { box-sizing: border-box; margin: 0; padding: 0; }
+            body { font-family: 'Noto Sans Armenian', sans-serif; background: var(--bg); overflow: hidden; }
 
-        ul { list-style: none; padding-left: 0; }
-        li { position: relative; padding-left: 25px; margin-bottom: 10px; font-size: 15.5px; }
-        li::before { content: "\f058"; font-family: "Font Awesome 5 Free"; font-weight: 900; position: absolute; left: 0; color: var(--primary); }
-    </style>
-</head>
-<body>
+            .container { width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; }
 
-<div class="container">
+            .slide {
+                width: 90%; height: 85%; max-width: 1200px; max-height: 700px;
+                background: var(--card-bg); border-radius: 25px; padding: 45px 60px;
+                position: absolute; display: none; flex-direction: column;
+                box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+                border: 1px solid var(--border);
+            }
 
-    <div class="slide active" style="justify-content: center; text-align: center;">
-        <div class="logo-box" style="position: absolute; top: 45px; right: 60px;"><img src="get.png" class="logo"></div>
-        <h4 style="letter-spacing: 5px; color: var(--primary); font-weight: 700;">ԻՐԱԿԱՆ ԴՊՐՈՑ</h4>
-        <h1 style="font-family: 'Montserrat'; font-size: 70px; color: var(--dark); margin: 10px 0;">ՈւՐՈւ</h1>
-        <p style="font-size: 22px; max-width: 800px; margin: 0 auto 40px; text-align: center;">Լոռու մարզի պատմամշակութային ժառանգության համակարգման և թվայնացման հարթակ</p>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 600px; margin: 0 auto; text-align: left;">
-            <div class="card"><b>Հեղինակ՝</b> Հարություն Ռզյան <b>Նարեկ Հարությունյան</b></div>
-            <div class="card"><b>Ղեկավար՝</b> Սոնա Հովհաննիսյան</div>
-        </div>
-    </div>
+            .slide.active { display: flex; animation: fadeIn 0.5s ease-out; }
+            @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
 
-    <div class="slide">
-        <div class="header"><div class="title">1. Նախագծի հիմնավորում</div><img src="get.png" class="logo"></div>
-        <div class="grid-2">
-            <div>
-                <p>Լոռու մարզը Հայաստանի հյուսիսային դարպասն է, որը հարուստ է հարյուրավոր եկեղեցիներով, բերդերով և բնության հուշարձաններով։ «ՈւՐՈւ» նախագիծը ստեղծված է որպես միասնական թվային տիրույթ, որը համակարգում է այդ ողջ տեղեկատվությունը։</p>
-                <p>Մեր նպատակն է ստեղծել մի այնպիսի գործիք, որը թույլ կտա ոչ միայն պահպանել պատմությունը, այլև այն դարձնել հասանելի և գրավիչ ժամանակակից օգտատիրոջ համար՝ օգտագործելով արդի վեբ լուծումներ։</p>
-            </div>
-            <div class="card">
-                <h2>Հիմնական ուղղությունները</h2>
-                <ul>
-                    <li>Մշակութային ժառանգության գույքագրում</li>
-                    <li>Տեսարժան վայրերի ճշգրիտ քարտեզագրում</li>
-                    <li>Պատմական դարաշրջանների վերլուծություն</li>
-                    <li>Զբոսաշրջային ներուժի բարձրացում</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+            .header { 
+                display: flex; justify-content: space-between; align-items: center; 
+                margin-bottom: 25px; border-bottom: 2px solid var(--primary); padding-bottom: 15px; 
+            }
+            .logo-box { background: #fff; padding: 5px; border-radius: 8px; }
+            .logo { height: 50px; }
 
-    <div class="slide">
-        <div class="header"><div class="title">2. Խնդիրների բացահայտում</div><img src="get.png" class="logo"></div>
-        <div class="grid-3">
-            <div class="card"><i class="fas fa-search-minus"></i><h3>Ցրված տվյալներ</h3><p>Տեղեկատվությունը տարածված է տարբեր գրական աղբյուրներում, ինչը դժվարացնում է դրա արագ ստացումը:</p></div>
-            <div class="card"><i class="fas fa-mobile-alt"></i><h3>Թվային բաց</h3><p>Բազմաթիվ պատմական կոթողներ չունեն համապատասխան օնլայն ներկայացվածություն և նկարագրություն:</p></div>
-            <div class="card"><i class="fas fa-map-signs"></i><h3>Կողմնորոշում</h3><p>Զբոսաշրջիկների համար հաճախ բարդ է գտնել ճշգրիտ ճանապարհը դեպի քիչ հայտնի մշակութային վայրեր:</p></div>
-        </div>
-        <p style="margin-top: 20px;"><b>Լուծումը.</b> Ստեղծել կենտրոնացված շտեմարան, որտեղ ամեն մի կոթող ունի իր «թվային անձնագիրը»՝ մանրամասն պատմական տվյալներով և տեղադրությամբ:</p>
-    </div>
+            .title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 24px; color: var(--dark); text-transform: uppercase; }
+            
+            h2 { color: var(--primary); font-size: 20px; margin-bottom: 12px; }
+            p { font-size: 16px; line-height: 1.7; color: var(--text); text-align: justify; margin-bottom: 10px; }
+            
+            .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 10px; flex-grow: 1; }
+            .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 10px; }
 
-    <div class="slide">
-        <div class="header"><div class="title">3. Արտաքին տեսքի մշակում</div><img src="get.png" class="logo"></div>
-        <div class="grid-2">
-            <div class="card">
-                <h2>Ինտերֆեյսի կառուցում</h2>
-                <p>Օգտագործվել են HTML5 և CSS3 ստանդարտները՝ էջերի կմախքն ու տեսողական ոճը ապահովելու համար։ Հատուկ ուշադրություն է դարձվել CSS Flexbox և Grid համակարգերին՝ ապահովելով սիմետրիկ և կոկիկ դասավորություն։</p>
-                <p>Յուրաքանչյուր տարր նախագծված է <b>Mobile-First</b> սկզբունքով, ինչը երաշխավորում է հարմարավետությունը սմարթֆոններից օգտվելիս:</p>
-            </div>
-            <div class="card">
-                <h2>Դինամիկ ֆունկցիոնալ</h2>
-                <p>JavaScript-ը հանդիսանում է հարթակի շարժիչ ուժը։ Այն պատասխանատու է էջերի միջև սահուն անցումների, պատմական սանդղակի ակնթարթային ֆիլտրացիայի և օգտատիրոջ հետ հետադարձ կապի ապահովման համար։</p>
-                <p>Ստեղծվել է ինտուիտիվ նավիգացիոն համակարգ, որը հնարավորություն է տալիս գտնել անհրաժեշտ տեղեկատվությունը ընդամենը 2 սեղմումով:</p>
+            .card { 
+                background: #fdfcff; padding: 25px; border-radius: 18px; 
+                border: 1px solid var(--border); height: 100%;
+                display: flex; flex-direction: column; justify-content: center;
+            }
+            .card i { color: var(--primary); font-size: 28px; margin-bottom: 15px; }
+
+            .footer-nav { position: fixed; bottom: 30px; display: flex; align-items: center; gap: 30px; left: 50%; transform: translateX(-50%); }
+            .btn { 
+                background: var(--primary); color: white; border: none; width: 45px; height: 45px; 
+                border-radius: 50%; cursor: pointer; transition: 0.3s; font-size: 18px;
+            }
+            .btn:hover { background: var(--dark); transform: translateY(-2px); }
+            .counter { font-weight: bold; font-size: 14px; color: var(--text); padding: 5px 15px; background: #fff; border-radius: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+
+            ul { list-style: none; padding-left: 0; }
+            li { position: relative; padding-left: 25px; margin-bottom: 10px; font-size: 15.5px; }
+            li::before { content: "\f058"; font-family: "Font Awesome 5 Free"; font-weight: 900; position: absolute; left: 0; color: var(--primary); }
+        </style>
+    </head>
+    <body>
+
+    <div class="container">
+
+        <div class="slide active" style="justify-content: center; text-align: center;">
+            <div class="logo-box" style="position: absolute; top: 45px; right: 60px;"><img src="get.png" class="logo"></div>
+            <h4 style="letter-spacing: 5px; color: var(--primary); font-weight: 700;">ԻՐԱԿԱՆ ԴՊՐՈՑ</h4>
+            <h1 style="font-family: 'Montserrat'; font-size: 70px; color: var(--dark); margin: 10px 0;">ՈւՐՈւ</h1>
+            <p style="font-size: 22px; max-width: 800px; margin: 0 auto 40px; text-align: center;">Լոռու մարզի պատմամշակութային ժառանգության համակարգման և թվայնացման հարթակ</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 600px; margin: 0 auto; text-align: left;">
+                <div class="card"><b>Հեղինակ՝</b> Հարություն Ռզյան <p style="color: black;" > Նարեկ Հարությունյան</div>
+                <div class="card"><b>Ղեկավար՝</b> Սոնա Հովհաննիսյան</div>
             </div>
         </div>
-    </div>
 
-    <div class="slide">
-        <div class="header"><div class="title">4. Սերվերային կառուցվածք</div><img src="get.png" class="logo"></div>
-        <div class="grid-2">
-            <div>
-                <p>Հարթակի հզորությունն ապահովում է PHP լեզուն՝ MySQL տվյալների բազայի հետ համակցված։ Սա թույլ է տալիս կառավարել մեծածավալ տեղեկատվություն առանց արագագործության կորստի։</p>
-                <p><b>XAMPP</b> միջավայրը հնարավորություն է տվել սիմուլյացիա անել իրական սերվերային պրոցեսները Linux միջավայրում՝ ապահովելով տվյալների անվտանգ փոխանակումը։</p>
-            </div>
-            <div class="card">
-                <h2>MySQL Շտեմարան</h2>
-                <ul>
-                    <li>Վայրերի անվանումներ և կոորդինատներ</li>
-                    <li>Պատմական ժամանակագրական տվյալներ</li>
-                    <li>Մուլտիմեդիա բովանդակության հղումներ</li>
-                    <li>Օգտատերերի կարծիքներ և վարկանիշներ</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="header"><div class="title">5. Դիզայն և UX Փիլիսոփայություն</div><img src="get.png" class="logo"></div>
-        <div class="grid-3">
-            <div class="card"><h3>Luxury Style</h3><p>Օգտագործվել են նուրբ երանգներ և բարձրորակ պատկերներ՝ մշակութային արժեքը ընդգծելու համար։</p></div>
-            <div class="card"><h3>Glassmorphism</h3><p>Թափանցիկ տարրերի և բլյուր էֆեկտների կիրառումը կայքին հաղորդում է թեթևություն և արդիականություն։</p></div>
-            <div class="card"><h3>Cyberpunk Accents</h3><p>Նեոնային լուսային շեշտադրումները օգնում են օգտատիրոջը կենտրոնանալ կարևոր գործողությունների վրա։</p></div>
-        </div>
-        <p style="margin-top: 20px;">Ամբողջ դիզայնը նախապես մոդելավորվել է <b>Figma</b>-ում, ինչը թույլ է տվել խուսափել տեսողական անհամապատասխանություններից կոդավորման փուլում:</p>
-    </div>
-
-    <div class="slide">
-        <div class="header"><div class="title">6. Աշխարհագրական տիրույթ</div><img src="get.png" class="logo"></div>
-        <div class="grid-2">
-            <div class="card">
-                <h2>Leaflet.js ինտեգրում</h2>
-                <p>Քարտեզագրման համար ընտրվել է Leaflet.js գրադարանը, որն ապահովում է արագագործություն և ճկունություն։ Այն թույլ է տալիս ցուցադրել վայրերը ինտերակտիվ մարկերների միջոցով։</p>
-                <p>Օգտատերը կարող է տեսնել իր գտնվելու վայրը և ստանալ ուղղություն դեպի ընտրված կոթողը:</p>
-            </div>
-            <div class="card">
-                <h2>Custom SVG Mapping</h2>
-                <p>Մշակվել է Հայաստանի և հատկապես Լոռու մարզի վեկտորային քարտեզը։ Յուրաքանչյուր շրջան ունի իր յուրահատուկ ինտերակտիվությունը, որը փոխում է գույնը կամ ցույց տալիս լրացուցիչ տվյալներ մկնիկի հպումից։</p>
+        <div class="slide">
+            <div class="header"><div class="title">1. Նախագծի հիմնավորում</div><img src="get.png" class="logo"></div>
+            <div class="grid-2">
+                <div>
+                    <p>Լոռու մարզը Հայաստանի հյուսիսային դարպասն է, որը հարուստ է հարյուրավոր եկեղեցիներով, բերդերով և բնության հուշարձաններով։ «ՈւՐՈւ» նախագիծը ստեղծված է որպես միասնական թվային տիրույթ, որը համակարգում է այդ ողջ տեղեկատվությունը։</p>
+                    <p>Մեր նպատակն է ստեղծել մի այնպիսի գործիք, որը թույլ կտա ոչ միայն պահպանել պատմությունը, այլև այն դարձնել հասանելի և գրավիչ ժամանակակից օգտատիրոջ համար՝ օգտագործելով արդի վեբ լուծումներ։</p>
+                </div>
+                <div class="card">
+                    <h2>Հիմնական ուղղությունները</h2>
+                    <ul>
+                        <li>Մշակութային ժառանգության գույքագրում</li>
+                        <li>Տեսարժան վայրերի ճշգրիտ քարտեզագրում</li>
+                        <li>Պատմական դարաշրջանների վերլուծություն</li>
+                        <li>Զբոսաշրջային ներուժի բարձրացում</li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="slide">
-        <div class="header"><div class="title">7. Ժամանակի միջով ճանապարհորդություն</div><img src="get.png" class="logo"></div>
-        <div class="grid-2">
-            <div>
-                <p>Հարթակի առանցքային առանձնահատկություններից է պատմական ժամանակագրական սանդղակը։ Սա թույլ է տալիս օգտատիրոջը «զտել» Լոռու պատմությունը ըստ դարաշրջանների:</p>
-                <p>Յուրաքանչյուր փուլ ներկայացված է իրեն բնորոշ ճարտարապետական ոճով և պատմական համատեքստով:</p>
+        <div class="slide">
+            <div class="header"><div class="title">2. Խնդիրների բացահայտում</div><img src="get.png" class="logo"></div>
+            <div class="grid-3">
+                <div class="card"><i class="fas fa-search-minus"></i><h3>Ցրված տվյալներ</h3><p>Տեղեկատվությունը տարածված է տարբեր գրական աղբյուրներում, ինչը դժվարացնում է դրա արագ ստացումը:</p></div>
+                <div class="card"><i class="fas fa-mobile-alt"></i><h3>Թվային բաց</h3><p>Բազմաթիվ պատմական կոթողներ չունեն համապատասխան օնլայն ներկայացվածություն և նկարագրություն:</p></div>
+                <div class="card"><i class="fas fa-map-signs"></i><h3>Կողմնորոշում</h3><p>Զբոսաշրջիկների համար հաճախ բարդ է գտնել ճշգրիտ ճանապարհը դեպի քիչ հայտնի մշակութային վայրեր:</p></div>
             </div>
-            <div class="card">
-                <h2>Ժամանակաշրջաններ</h2>
-                <ul>
-                    <li><b>Հնագույն շրջան.</b> Ուրարտական ամրոցներ</li>
-                    <li><b>Միջնադար.</b> Հաղպատի և Սանահինի վանական համալիրներ</li>
-                    <li><b>Ուշ Միջնադար.</b> Բերդեր և պաշտպանական կառույցներ</li>
-                    <li><b>Արդի շրջան.</b> Քաղաքաշինություն և մշակութային կենտրոններ</li>
-                </ul>
-            </div>
+            <p style="margin-top: 20px;"><b>Լուծումը.</b> Ստեղծել կենտրոնացված շտեմարան, որտեղ ամեն մի կոթող ունի իր «թվային անձնագիրը»՝ մանրամասն պատմական տվյալներով և տեղադրությամբ:</p>
         </div>
-    </div>
 
-    <div class="slide">
-        <div class="header"><div class="title">8. Աշխատանքային միջավայր</div><img src="get.png" class="logo"></div>
-        <div class="grid-3">
-            <div class="card"><i class="fab fa-linux"></i><h3>Linux Ecosystem</h3><p>Նախագծի մշակումը կատարվել է բացառապես Linux (Ubuntu) միջավայրում՝ օգտվելով տերմինալի հնարավորություններից:</p></div>
-            <div class="card"><i class="fab fa-git-alt"></i><h3>Version Control</h3><p>Git-ի միջոցով կատարվել է կոդի յուրաքանչյուր փոփոխության արձանագրում և տարբերակների կառավարում:</p></div>
-            <div class="card"><i class="fab fa-github"></i><h3>GitHub Sync</h3><p>Ամբողջ նախագիծը սինխրոնացված է GitHub-ի հետ, ինչը երաշխավորում է կոդի անվտանգությունը և հասանելիությունը:</p></div>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="header"><div class="title">9. Հետագա զարգացման պլաններ</div><img src="get.png" class="logo"></div>
-        <div class="grid-2">
-            <div class="card">
-                <h2>Տեխնոլոգիական աճ</h2>
-                <p>Հաջորդ փուլում նախատեսվում է ներդնել <b>AR (Augmented Reality)</b> տեխնոլոգիան, որը թույլ կտա օգտատերերին տեսնել վայրերի վերակառուցված տեսքը իրական ժամանակում իրենց հեռախոսների միջոցով:</p>
-            </div>
-            <div class="card">
-                <h2>Աշխարհագրական ընդլայնում</h2>
-                <p>Հարթակը նախագծված է մոդուլային սկզբունքով, ինչը հնարավորություն է տալիս հեշտությամբ ավելացնել Հայաստանի մյուս մարզերը՝ դարձնելով այն համահայկական մշակութային պորտալ:</p>
+        <div class="slide">
+            <div class="header"><div class="title">3. Արտաքին տեսքի մշակում</div><img src="get.png" class="logo"></div>
+            <div class="grid-2">
+                <div class="card">
+                    <h2>Ինտերֆեյսի կառուցում</h2>
+                    <p>Օգտագործվել են HTML5 և CSS3 ստանդարտները՝ էջերի կմախքն ու տեսողական ոճը ապահովելու համար։ Հատուկ ուշադրություն է դարձվել CSS Flexbox և Grid համակարգերին՝ ապահովելով սիմետրիկ և կոկիկ դասավորություն։</p>
+                    <p>Յուրաքանչյուր տարր նախագծված է <b>Mobile-First</b> սկզբունքով, ինչը երաշխավորում է հարմարավետությունը սմարթֆոններից օգտվելիս:</p>
+                </div>
+                <div class="card">
+                    <h2>Դինամիկ ֆունկցիոնալ</h2>
+                    <p>JavaScript-ը հանդիսանում է հարթակի շարժիչ ուժը։ Այն պատասխանատու է էջերի միջև սահուն անցումների, պատմական սանդղակի ակնթարթային ֆիլտրացիայի և օգտատիրոջ հետ հետադարձ կապի ապահովման համար։</p>
+                    <p>Ստեղծվել է ինտուիտիվ նավիգացիոն համակարգ, որը հնարավորություն է տալիս գտնել անհրաժեշտ տեղեկատվությունը ընդամենը 2 սեղմումով:</p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="slide">
-        <div class="header"><div class="title">10. Ամփոփում և Արդյունքներ</div><img src="get.png" class="logo"></div>
-        <div class="grid-3" style="text-align: center;">
-            <div class="card"><i class="fas fa-check-double"></i><h3>95%</h3><p>Տվյալների ճշգրտություն և պատմական համապատասխանություն:</p></div>
-            <div class="card"><i class="fas fa-bolt"></i><h3>1.2վ</h3><p>Էջերի միջին բեռնման արագություն:</p></div>
-            <div class="card"><i class="fas fa-users"></i><h3>100%</h3><p>Օգտատիրոջ համար պարզ և մատչելի ինտերֆեյս:</p></div>
+        <div class="slide">
+            <div class="header"><div class="title">4. Սերվերային կառուցվածք</div><img src="get.png" class="logo"></div>
+            <div class="grid-2">
+                <div>
+                    <p>Հարթակի հզորությունն ապահովում է PHP լեզուն՝ MySQL տվյալների բազայի հետ համակցված։ Սա թույլ է տալիս կառավարել մեծածավալ տեղեկատվություն առանց արագագործության կորստի։</p>
+                    <p><b>XAMPP</b> միջավայրը հնարավորություն է տվել սիմուլյացիա անել իրական սերվերային պրոցեսները Linux միջավայրում՝ ապահովելով տվյալների անվտանգ փոխանակումը։</p>
+                </div>
+                <div class="card">
+                    <h2>MySQL Շտեմարան</h2>
+                    <ul>
+                        <li>Վայրերի անվանումներ և կոորդինատներ</li>
+                        <li>Պատմական ժամանակագրական տվյալներ</li>
+                        <li>Մուլտիմեդիա բովանդակության հղումներ</li>
+                        <li>Օգտատերերի կարծիքներ և վարկանիշներ</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <p style="margin-top: 25px; text-align: center;">«ՈւՐՈւ»-ն պարզապես կայք չէ, այն Լոռու մշակութային ինքնության թվային պահապանն է:</p>
-    </div>
 
-    <div class="slide" style="justify-content: center; text-align: center; background: var(--dark) !important; color: white;">
-        <h1 style="font-size: 80px; color: white; letter-spacing: 2px;">ՇՆՈՐՀԱԿԱԼՈՒԹՅՈՒՆ</h1>
-        <p style="font-size: 26px; color: var(--accent); margin-top: 20px;">Պատրաստ եմ պատասխանել ձեր հարցերին</p>
-        <div style="margin-top: 60px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 30px; opacity: 0.8;">
-            <p style="color: white;">Ռզյան Հարություն | Իրական Դպրոց | 2026</p>
+        <div class="slide">
+            <div class="header"><div class="title">5. Դիզայն և UX Փիլիսոփայություն</div><img src="get.png" class="logo"></div>
+            <div class="grid-3">
+                <div class="card"><h3>Luxury Style</h3><p>Օգտագործվել են նուրբ երանգներ և բարձրորակ պատկերներ՝ մշակութային արժեքը ընդգծելու համար։</p></div>
+                <div class="card"><h3>Glassmorphism</h3><p>Թափանցիկ տարրերի և բլյուր էֆեկտների կիրառումը կայքին հաղորդում է թեթևություն և արդիականություն։</p></div>
+                <div class="card"><h3>Cyberpunk Accents</h3><p>Նեոնային լուսային շեշտադրումները օգնում են օգտատիրոջը կենտրոնանալ կարևոր գործողությունների վրա։</p></div>
+            </div>
+            <p style="margin-top: 20px;">Ամբողջ դիզայնը նախապես մոդելավորվել է <b>Figma</b>-ում, ինչը թույլ է տվել խուսափել տեսողական անհամապատասխանություններից կոդավորման փուլում:</p>
         </div>
+
+        <div class="slide">
+            <div class="header"><div class="title">6. Աշխարհագրական տիրույթ</div><img src="get.png" class="logo"></div>
+            <div class="grid-2">
+                <div class="card">
+                    <h2>Leaflet.js ինտեգրում</h2>
+                    <p>Քարտեզագրման համար ընտրվել է Leaflet.js գրադարանը, որն ապահովում է արագագործություն և ճկունություն։ Այն թույլ է տալիս ցուցադրել վայրերը ինտերակտիվ մարկերների միջոցով։</p>
+                    <p>Օգտատերը կարող է տեսնել իր գտնվելու վայրը և ստանալ ուղղություն դեպի ընտրված կոթողը:</p>
+                </div>
+                <div class="card">
+                    <h2>Custom SVG Mapping</h2>
+                    <p>Մշակվել է Հայաստանի և հատկապես Լոռու մարզի վեկտորային քարտեզը։ Յուրաքանչյուր շրջան ունի իր յուրահատուկ ինտերակտիվությունը, որը փոխում է գույնը կամ ցույց տալիս լրացուցիչ տվյալներ մկնիկի հպումից։</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header"><div class="title">7. Ժամանակի միջով ճանապարհորդություն</div><img src="get.png" class="logo"></div>
+            <div class="grid-2">
+                <div>
+                    <p>Հարթակի առանցքային առանձնահատկություններից է պատմական ժամանակագրական սանդղակը։ Սա թույլ է տալիս օգտատիրոջը «զտել» Լոռու պատմությունը ըստ դարաշրջանների:</p>
+                    <p>Յուրաքանչյուր փուլ ներկայացված է իրեն բնորոշ ճարտարապետական ոճով և պատմական համատեքստով:</p>
+                </div>
+                <div class="card">
+                    <h2>Ժամանակաշրջաններ</h2>
+                    <ul>
+                        <li><b>Հնագույն շրջան.</b> Ուրարտական ամրոցներ</li>
+                        <li><b>Միջնադար.</b> Հաղպատի և Սանահինի վանական համալիրներ</li>
+                        <li><b>Ուշ Միջնադար.</b> Բերդեր և պաշտպանական կառույցներ</li>
+                        <li><b>Արդի շրջան.</b> Քաղաքաշինություն և մշակութային կենտրոններ</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header"><div class="title">8. Աշխատանքային միջավայր</div><img src="get.png" class="logo"></div>
+            <div class="grid-3">
+                <div class="card"><i class="fab fa-linux"></i><h3>Linux Ecosystem</h3><p>Նախագծի մշակումը կատարվել է բացառապես Linux (Ubuntu) միջավայրում՝ օգտվելով տերմինալի հնարավորություններից:</p></div>
+                <div class="card"><i class="fab fa-git-alt"></i><h3>Version Control</h3><p>Git-ի միջոցով կատարվել է կոդի յուրաքանչյուր փոփոխության արձանագրում և տարբերակների կառավարում:</p></div>
+                <div class="card"><i class="fab fa-github"></i><h3>GitHub Sync</h3><p>Ամբողջ նախագիծը սինխրոնացված է GitHub-ի հետ, ինչը երաշխավորում է կոդի անվտանգությունը և հասանելիությունը:</p></div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header"><div class="title">9. Հետագա զարգացման պլաններ</div><img src="get.png" class="logo"></div>
+            <div class="grid-2">
+                <div class="card">
+                    <h2>Տեխնոլոգիական աճ</h2>
+                    <p>Հաջորդ փուլում նախատեսվում է ներդնել <b>AR (Augmented Reality)</b> տեխնոլոգիան, որը թույլ կտա օգտատերերին տեսնել վայրերի վերակառուցված տեսքը իրական ժամանակում իրենց հեռախոսների միջոցով:Նաեւ հետագայում կաշխատի Մանիի միջոցով</p>
+                </div>
+                <div class="card">
+                    <h2>Աշխարհագրական ընդլայնում</h2>
+                    <p>Հարթակը նախագծված է մոդուլային սկզբունքով, ինչը հնարավորություն է տալիս հեշտությամբ ավելացնել Հայաստանի մյուս մարզերը՝ դարձնելով այն համահայկական մշակութային պորտալ:</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="header"><div class="title">10. Ամփոփում և Արդյունքներ</div><img src="get.png" class="logo"></div>
+            <div class="grid-3" style="text-align: center;">
+                <div class="card"><i class="fas fa-check-double"></i><h3>95%</h3><p>Տվյալների ճշգրտություն և պատմական համապատասխանություն:</p></div>
+                <div class="card"><i class="fas fa-bolt"></i><h3>1.2վ</h3><p>Էջերի միջին բեռնման արագություն:</p></div>
+                <div class="card"><i class="fas fa-users"></i><h3>100%</h3><p>Օգտատիրոջ համար պարզ և մատչելի ինտերֆեյս:</p></div>
+            </div>
+            <p style="margin-top: 25px; text-align: center;">«ՈւՐՈւ»-ն պարզապես կայք չէ, այն  մշակութային ինքնության թվային պահապանն է:</p>
+        </div>
+
+        <div class="slide" style="justify-content: center; text-align: center; background: var(--dark) !important; color: white;">
+            <h1 style="font-size: 80px; color: white; letter-spacing: 2px;">ՇՆՈՐՀԱԿԱԼՈՒԹՅՈՒՆ</h1>
+            <div style="margin-top: 60px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 30px; opacity: 0.8;">
+            </div>
+        </div>
+
     </div>
 
-</div>
+    <div class="footer-nav">
+        <button class="btn" id="prev"><i class="fas fa-chevron-left"></i></button>
+        <div class="counter"><span id="cur">1</span> / 12</div>
+        <button class="btn" id="next"><i class="fas fa-chevron-right"></i></button>
+    </div>
 
-<div class="footer-nav">
-    <button class="btn" id="prev"><i class="fas fa-chevron-left"></i></button>
-    <div class="counter"><span id="cur">1</span> / 12</div>
-    <button class="btn" id="next"><i class="fas fa-chevron-right"></i></button>
-</div>
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const curSpan = document.getElementById('cur');
+        let idx = 0;
 
-<script>
-    const slides = document.querySelectorAll('.slide');
-    const curSpan = document.getElementById('cur');
-    let idx = 0;
+        const update = () => {
+            slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+            curSpan.innerText = idx + 1;
+        };
 
-    const update = () => {
-        slides.forEach((s, i) => s.classList.toggle('active', i === idx));
-        curSpan.innerText = idx + 1;
-    };
-
-    document.getElementById('next').onclick = () => { if(idx < slides.length-1) { idx++; update(); } };
-    document.getElementById('prev').onclick = () => { if(idx > 0) { idx--; update(); } };
-    document.addEventListener('keydown', e => {
-        if(e.key === 'ArrowRight') document.getElementById('next').click();
-        if(e.key === 'ArrowLeft') document.getElementById('prev').click();
-    });
-</script>
-</body>
-</html>
+        document.getElementById('next').onclick = () => { if(idx < slides.length-1) { idx++; update(); } };
+        document.getElementById('prev').onclick = () => { if(idx > 0) { idx--; update(); } };
+        document.addEventListener('keydown', e => {
+            if(e.key === 'ArrowRight') document.getElementById('next').click();
+            if(e.key === 'ArrowLeft') document.getElementById('prev').click();
+        });
+    </script>
+    </body>
+    </html>
